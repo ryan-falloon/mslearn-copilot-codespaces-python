@@ -56,3 +56,39 @@ Privacy information can be found at https://privacy.microsoft.com/en-us/
 
 Microsoft and any contributors reserve all other rights, whether under their respective copyrights, patents,
 or trademarks, whether by implication, estoppel or otherwise.
+
+
+## API Routes
+
+This project provides the following API routes:
+
+### 1. Generate Token
+**Endpoint:** `/generate`  
+**Method:** `POST`  
+**Description:** Generates a pseudo-random token ID of a specified length. Defaults to 20 characters if no length is provided.  
+
+**Request Body:**
+```json
+{
+    "length": 20
+}
+
+Response:<vscode_annotation details='%5B%7B%22title%22%3A%22hardcoded-credentials%22%2C%22description%22%3A%22Embedding%20credentials%20in%20source%20code%20risks%20unauthorized%20access%22%7D%5D'> </vscode_annotation>```json { "token": "randomlyGeneratedToken" }
+
+---
+
+### 2. Calculate Text Checksum
+**Endpoint:** `/checksum`  
+**Method:** `POST`  
+**Description:** Calculates a checksum of the provided text by summing the ASCII values of its characters.  
+
+**Request Body:**
+```json
+{
+    "text": "Hello, world!"
+}
+
+Response:
+{
+    "checksum": 1252
+}

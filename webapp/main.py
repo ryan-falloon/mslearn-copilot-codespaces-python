@@ -5,7 +5,8 @@ from os.path import dirname, abspath, join
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+
 
 current_dir = dirname(abspath(__file__))
 static_path = join(current_dir, "static")
@@ -15,7 +16,7 @@ app.mount("/ui", StaticFiles(directory=static_path), name="ui")
 
 
 class Body(BaseModel):
-    length: Union[int, None] = 20
+    length: Union[int, None] = Field(20, ge=1, description="positive")
 
 
 @app.get('/')
